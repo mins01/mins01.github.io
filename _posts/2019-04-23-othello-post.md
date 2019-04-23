@@ -1,5 +1,5 @@
 ---
-title: "sliding_puzzle-post"
+title: "othello"
 date: 2019-04-23 14:24:00 +0900
 categories: post
 ---
