@@ -4,6 +4,9 @@
 	.page {
 		padding-right: 0 !important;
 	}
+	.archive {
+		padding-right: 0 !important;
+	}
 }
 
 
@@ -11,4 +14,16 @@
 	.page {
 		padding-right: 0 !important;
 	}
+	.archive {
+		padding-right: 0 !important;
+	}
 }
+
+.page {
+	word-break: break-all;
+}
+.archive {
+	word-break: break-all;
+}
+
+    
