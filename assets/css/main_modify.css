@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+@media (min-width: 80em)
+.page {
+	padding-right: 0;
+}
+
+@media (min-width: 64em)
+.page {
+    padding-right: 0px;
+}
