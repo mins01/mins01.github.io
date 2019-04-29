@@ -1,5 +1,15 @@
 <meta charset="utf-8">
 
+<!-- google adsense -->
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({
+google_ad_client: "ca-pub-5804424351292113",
+enable_page_level_ads: true
+});
+</script>
+
+
 {% include seo.html %}
 
 <link href="{% if site.atom_feed.path %}{{ site.atom_feed.path }}{% else %}{{ '/feed.xml' | relative_url }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ site.title }} Feed">
@@ -41,11 +51,3 @@
   {% endfor %}
 {% endif %}
 
-<!-- 구글 광고 -->
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-<script>
-(adsbygoogle = window.adsbygoogle || []).push({
-google_ad_client: "ca-pub-5804424351292113",
-enable_page_level_ads: true
-});
-</script>
