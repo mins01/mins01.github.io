@@ -1,13 +1,42 @@
 <meta charset="utf-8">
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script>
+(function(){
+	switch(document.location.hostname){
+		case "mins01.com":
+		case "www.mins01.com":
+			var siteId= 'UA-28167507-1';
+		break;
+		case "mins01.github.io":
+			var siteId= 'UA-28167507-3';
+		break;
+		default:
+			var siteId= null;
+		break;
+	}
+	if(siteId===null){
+		return;
+	}
+	var src = 'https://www.googletagmanager.com/gtag/js?id='+siteId;
+	document.write('<scrip');
+	document.write('t async src="'+src+'"></scr');
+	document.write('ipt>');
+
+	window.dataLayer = window.dataLayer || [];
+	function gtag(){dataLayer.push(arguments);}
+	gtag('js', new Date());
+	gtag('config', siteId);
+})()
+</script>
 
 <!-- google adsense -->
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <script>
 (adsbygoogle = window.adsbygoogle || []).push({
 google_ad_client: "ca-pub-5804424351292113",
 enable_page_level_ads: true
 });
-</script>
+</script> -->
 
 
 {% include seo.html %}
