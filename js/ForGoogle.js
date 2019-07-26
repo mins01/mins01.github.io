@@ -1,6 +1,16 @@
 var ForGoogle = (function(){
 	var ForGoogle = {
+		"getLanguage":function(){
+			var language = navigator.language || navigator.browserLanguage || navigator.userLanguage || navigator.systemLanguage;
+			return language;
+		},
+		"isChina":function(){
+			var checkedLang = this.getLanguage().indexOf('zh')===0; //중국어 체크 
+			var checkedTimeZO =  ((new Date()).getTimezoneOffset()/60 == -8); //타임존 체크
+			return checkedLang || checkedTimeZO; //중국내 다른 언어 설정하는 사람이 있어서 ||로 체크
+		},
 		"analytics":function(){
+			if(ForGoogle.isChina()){ return false; }
 			if(this.analytics.out){return false;}
 			this.analytics.out = true;
 			switch(document.location.hostname){
@@ -30,6 +40,7 @@ var ForGoogle = (function(){
 		},
 		"ads":{
 			"init":function(){
+				if(ForGoogle.isChina()){ return false; }
 				if(this.init.out){return false;}
 				this.init.out = true;
 				var src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js';
@@ -37,7 +48,9 @@ var ForGoogle = (function(){
 				document.write('t async src="'+src+'"></scr');
 				document.write('ipt>');
 			},
+			//adsReactive02 으로 대체
 			"ads300x250":function(){
+				if(ForGoogle.isChina()){ return false; }
 				this.init();
 				document.write('<ins class="adsbygoogle"'
 		     +'style="display:inline-block;width:300px;height:250px"'
@@ -45,7 +58,9 @@ var ForGoogle = (function(){
 		     +'data-ad-slot="1810563809"></ins>');
 				 (adsbygoogle = window.adsbygoogle || []).push({});
 			},
-			"ads300x50":function(){
+			//동작 안하네
+			"ads320x50":function(){
+				if(ForGoogle.isChina()){ return false; }
 				this.init();
 				document.write('<ins class="adsbygoogle"'
 		     +'style="display:inline-block;width:320px;height:50px"'
@@ -53,7 +68,38 @@ var ForGoogle = (function(){
 		     +'data-ad-slot="5262485004"></ins>');
 				 (adsbygoogle = window.adsbygoogle || []).push({});
 			},
+			// ads320x50 대신 사용
+			"ads320x100":function(){
+				if(ForGoogle.isChina()){ return false; }
+				this.init();
+				document.write('<ins class="adsbygoogle"'
+		     +'style="display:inline-block;width:320px;height:100px"'
+		     +'data-ad-client="ca-pub-5804424351292113"'
+		     +'data-ad-slot="6250234571"></ins>');
+				 (adsbygoogle = window.adsbygoogle || []).push({});
+			},
+			//반응형 광고1, 상단용, 현재 사용안함
+			"adsReactive01":function(){
+				if(ForGoogle.isChina()){ return false; }
+				this.init();
+				document.write('<ins class="adsbygoogle"'
+		     +'style="display:block"'
+		     +'data-ad-client="ca-pub-5804424351292113"'
+		     +'data-ad-slot="9023737571" data-ad-format="auto" data-full-width-responsive="true">></ins>');
+				 (adsbygoogle = window.adsbygoogle || []).push({});
+			},
+			//반응형 광고2, 하단용
+			"adsReactive02":function(){
+				if(ForGoogle.isChina()){ return false; }
+				this.init();
+				document.write('<ins class="adsbygoogle"'
+		     +'style="display:block"'
+		     +'data-ad-client="ca-pub-5804424351292113"'
+		     +'data-ad-slot="6500558156" data-ad-format="auto" data-full-width-responsive="true">></ins>');
+				 (adsbygoogle = window.adsbygoogle || []).push({});
+			},
 		}
 	}
+	ForGoogle.ads.ads300x50 = ForGoogle.ads.ads320x50
 	return ForGoogle;
 })()
